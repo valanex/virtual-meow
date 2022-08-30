@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import SidePanel from "./components/SidePanel";
+import MainPanel from "./components/MainPanel";
+
 import './App.css';
-import SidePanel from "./components/SidePanel"
-import MainPanel from "./components/MainPanel"
 
 function App() {
   const [pet, setPet] = useState({
@@ -18,8 +19,7 @@ function App() {
         <h1>Virtual Meower</h1>
       </header>
       <main className="App-main">
-        <SidePanel 
-          pet = {pet} />
+        <SidePanel pet = {pet} />
         <MainPanel petName={pet.name} />
       </main>
       <footer className="App-footer">

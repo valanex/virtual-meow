@@ -18,16 +18,16 @@
 }
 
 .Side-panel {
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
   background-color: #5C6F60;
-  width: 20%;
+  width: 25%;
   max-width: 350px;
 }
 
 .Main-panel {
   padding: 3rem;
   background-color: #3B5140;
-  width: 40%;
+  width: 45%;
   max-width: 700px;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
 
 .Stat-bar {
   text-align: left;
-  background-color: black;
+  margin: 1rem 0;
 }
 
 h2 {
@@ -77,4 +77,62 @@ button {
   border: 0;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.progress {
+  background-color: white;
+  border-radius: 0;
+  height: 8px;
+}
+
+.progress-bar {
+  background-color: grey;
+}
+
+.bg-health {
+  background-color: #4C8C47;
+}
+
+.bg-hunger {
+  background-color: #BB6F16;
+}
+
+.bg-happiness {
+  background-color: #2C76BB;
+}
+
+.settings {
+  margin: 0.5rem 0;
+  background-color: #474747;
+}
+
+.settings-menu {
+  padding: 0.75em;
+  text-align: left;
+}
+
+.settings-menu input {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 0.75rem;
+}
+
+.speed-options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.speed-button {
+  color: #474747;
+  padding: 0.2rem;
+  width: 2.5rem;
+}
+
+.reset-button {
+  margin-top: 1rem;
+  background-color: #7C0000;
+  width: 100%;
 }
