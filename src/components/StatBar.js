@@ -6,7 +6,11 @@ function StatBar(props) {
     return (
         <div className="Stat-bar">
             <h2>{props.statName}</h2>
-            <ProgressBar now={60} variant={props.type} />       
+            <ProgressBar 
+                now={props.statDisplay} 
+                variant={props.type} 
+                min={0} 
+                max={100} />       
         </div>
     );
 }

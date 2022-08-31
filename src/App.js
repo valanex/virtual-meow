@@ -8,10 +8,10 @@ function App() {
   const [hideMenu, setHideMenu] = useState(false)
   const [pet, setPet] = useState({
     name: "Meower",
-    age: 43,
+    age: 3,
     health: 70,
     hunger: 30,
-    happiness: 70
+    happiness: 80
   });
 
   return (
@@ -21,7 +21,7 @@ function App() {
       </header>
       <main className="App-main">
         <SidePanel pet={pet} setPet={setPet} hideMenu={hideMenu} setHideMenu={setHideMenu} />
-        <MainPanel petName={pet.name} />
+        <MainPanel pet={pet} setPet={setPet} />
       </main>
       <footer className="App-footer">
         <p>created using React<br />by Angela Sun, 2022</p>

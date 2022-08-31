@@ -1,15 +1,16 @@
 import React from "react";
 
 function SettingsMenu(props) {
+    // Assign props as variable to improve readability
     const pet = props.pet;
     const setPet = props.setPet;
 
+    // Sets the pet's name as value entered in the input field, updated per keystroke.
     function handleChange(event) {
-        console.log(event.target)
         const {name, value} = event.target
-        setPet(prevFormData => {
+        setPet(prevData => {
             return {
-                ...prevFormData,
+                ...prevData,
                 [name]: value
             }
         })
@@ -19,7 +20,6 @@ function SettingsMenu(props) {
         <div className="settings settings-menu">
             <p>Pet's name</p>
             <input 
-                defaultValue={pet.name} 
                 type="text" 
                 onChange={handleChange}
                 name="name" 
