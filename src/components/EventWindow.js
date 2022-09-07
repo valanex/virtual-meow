@@ -1,9 +1,14 @@
 import React from "react";
 
-function EventWindow() {
+function EventWindow(props) {
+    const event = props.event;
+    console.log("Event window rendered!");
+
     return (
         <div className="Event-window">
-            <p>FEED MEOWER</p>
+            <p>EVENT: {event.title}</p>
+            <p>{event.type}</p>
+            <p>{event.description}</p>
         </div>
     );
 }
