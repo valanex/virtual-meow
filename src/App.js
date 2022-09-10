@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SidePanel from "./components/SidePanel";
 import MainPanel from "./components/MainPanel";
 import './App.css';
@@ -25,13 +25,41 @@ function App() {
     nextEvent: 2,
   });
 
-  // Fetches an event from the Virtual Pet Events API.
+  // Takes two parameters: the attribute to be affected and the amount (positive or negative) that the attribute will be changed by.
+  function adjustStat(attribute, statChange) {
+        
+    // newStat is a placeholder variable to store the attribute's new value before being written into state.
+    let newStat = 0;
+
+    // Calculates the new value for the relevant attribute and stores the number in newStat.
+    if (attribute === "health") {
+        newStat = pet.health + statChange;
+    } else if (attribute === "hunger") {
+        newStat = pet.hunger + statChange;
+    } else if (attribute === "happiness") {
+        newStat = pet.happiness + statChange;
+    }
+
+    // Processes newStat to lock stats to a range between 0 and 100.
+    if(newStat > 100) {
+        newStat = 100;
+    } else if (newStat < 0) {
+        newStat = 0;
+    }
+
+    // Sets the new value in pet state by adding in all existing properties and finally overwriting the relevant attribute (stat) with the new value.
+    setPet(prevData => {
+      return {
+          ...prevData,
+          [attribute]: newStat
+      }
+    })
+  }
+
+  // DEBUG logs pet object whenever pet state is updated.
   useEffect(() => {
-    console.log("Event data fetched!")
-    fetch(`http://www.virtual-pet.uk/v1/event`)
-      .then(res => res.json())
-      .then(data => setEvent(data))
-  }, [changeEvent]);
+    console.log(pet)
+  }, [pet])
 
   return (
     <div className="App">
@@ -39,11 +67,25 @@ function App() {
         <h1>Virtual Meower</h1>
       </header>
       <main className="App-main">
-        <SidePanel pet={pet} setPet={setPet} hideMenu={hideMenu} setHideMenu={setHideMenu} petAge={petAge} setPetAge={setPetAge} />
-        <MainPanel pet={pet} setPet={setPet} event={event} />
+        <SidePanel 
+          pet={pet} 
+          setPet={setPet} 
+          hideMenu={hideMenu} 
+          setHideMenu={setHideMenu} 
+          petAge={petAge} 
+          setPetAge={setPetAge} 
+          adjustStat={adjustStat} 
+        />
+        <MainPanel 
+          pet={pet} 
+          setPet={setPet} 
+          event={event} 
+          setEvent={setEvent} 
+          adjustStat={adjustStat} 
+        />
       </main>
       <footer className="App-footer">
-        <p>created using React<br />by Angela Sun, 2022</p>
+        <p>developed in React<br />by Angela Sun, 2022</p>
       </footer>
     </div>
   );
