@@ -20,7 +20,17 @@ function SidePanel(props) {
 
             {/* Pet's age. Each day of age is an interval in ms set by the gameSpeed, adjustable in the SettingsMenu component. */}
             <p>and I am now</p>
-            <PetAge petAge={props.petAge} setPetAge={props.setPetAge} gameSpeed={gameSpeed} pet={props.pet} setPet={props.setPet} adjustStat={props.adjustStat} />
+            <PetAge
+                eventDate={props.eventDate}
+                nextEvent={props.nextEvent}
+                getNewEvent={props.getNewEvent} 
+                petAge={props.petAge} 
+                setPetAge={props.setPetAge} 
+                gameSpeed={gameSpeed} 
+                pet={props.pet} 
+                setPet={props.setPet} 
+                adjustStat={props.adjustStat} 
+            />
 
             {/* Status bars to display pet's stats. */}
             <StatBar type="health" statName="Health" statDisplay={props.pet.health} />

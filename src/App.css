@@ -49,6 +49,10 @@
   font-family: 'Consolas';
 }
 
+.Event-window span {
+  text-transform: uppercase;
+}
+
 .Button-cont {
   width: 90%;
   margin: 1rem;

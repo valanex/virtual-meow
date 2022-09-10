@@ -5,24 +5,28 @@ import './App.css';
 
 function App() {
   const [hideMenu, setHideMenu] = useState(false);
-  const [changeEvent, setChangeEvent] = useState(0);
+  const [eventDate, setEventDate] = useState(0);
   const [petAge, setPetAge] = useState(0);
 
   // Initializes pet state.
   const [pet, setPet] = useState({
     name: "Meower",
-    health: 70,
-    hunger: 30,
-    happiness: 80
+    health: 0,
+    hunger: 0,
+    happiness: 0
   });
 
   // Initializes events state.
   const [event, setEvent] = useState({
-    title: "",
-    type: "",
-    description: "",
-    impact: 0,
-    nextEvent: 2,
+    title: "meet your new pet",
+    type: "New pet",
+    description: "Say hello to your new pet! Make sure you feed them and keep them healthy.",
+    impact: {
+      health: 70,
+      hunger: 30,
+      happiness: 80
+    },
+    nextEvent: 5,
   });
 
   // Takes two parameters: the attribute to be affected and the amount (positive or negative) that the attribute will be changed by.
@@ -61,6 +65,15 @@ function App() {
     console.log(pet)
   }, [pet])
 
+  //  Fetches a new event.
+  function getNewEvent() {
+    console.log("Event data fetched!")
+    fetch(`http://www.virtual-pet.uk/v1/event`)
+        .then(res => res.json())
+        .then(data => setEvent(data))
+    setEventDate(petAge)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -68,19 +81,21 @@ function App() {
       </header>
       <main className="App-main">
         <SidePanel 
-          pet={pet} 
-          setPet={setPet} 
           hideMenu={hideMenu} 
           setHideMenu={setHideMenu} 
+          eventDate={eventDate}
+          pet={pet} 
+          setPet={setPet} 
+          nextEvent={event.nextEvent}
           petAge={petAge} 
           setPetAge={setPetAge} 
           adjustStat={adjustStat} 
+          getNewEvent={getNewEvent}
         />
         <MainPanel 
           pet={pet} 
           setPet={setPet} 
           event={event} 
-          setEvent={setEvent} 
           adjustStat={adjustStat} 
         />
       </main>
