@@ -3,9 +3,14 @@ import React, { useEffect } from "react";
 function PetAge(props) {
     let petAge = props.petAge;
 
-    // Increases the pet's age by 1 per in-game day, determined by the game speed in milliseconds. 
+    // Increases the pet's age by 1 per in-game day while the pet is alive, determined by the game speed in milliseconds. 
     useEffect(() => {
-        setTimeout(()=>props.setPetAge(props.petAge +1), props.gameSpeed)
+        let gameTime = ""
+        if(props.pet.isAlive) {
+            gameTime = setTimeout(()=>props.setPetAge(props.petAge +1), props.gameSpeed)
+        } else {
+            clearTimeout(gameTime);
+        }
         }, [petAge]);
 
     // Processes changes for each in-game day.

@@ -16,7 +16,7 @@ function EventWindow(props) {
         props.adjustStat("health", event.impact.health)
         props.adjustStat("hunger", event.impact.hunger)
         props.adjustStat("happiness", event.impact.happiness)
-    }, [event])
+    }, [event.impact])
 
     return (
         <div className="Event-window">

@@ -19,7 +19,7 @@ function SidePanel(props) {
             <h2>{props.pet.name}</h2>
 
             {/* Pet's age. Each day of age is an interval in ms set by the gameSpeed, adjustable in the SettingsMenu component. */}
-            <p>and I am now</p>
+            {props.pet.isAlive ? <p>and I am now</p> : <p>and I was</p>}
             <PetAge
                 eventDate={props.eventDate}
                 nextEvent={props.nextEvent}

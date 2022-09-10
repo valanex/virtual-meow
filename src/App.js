@@ -11,16 +11,17 @@ function App() {
   // Initializes pet state.
   const [pet, setPet] = useState({
     name: "Meower",
-    health: 0,
-    hunger: 0,
-    happiness: 0
+    health: 1,
+    hunger: 1,
+    happiness: 1,
+    isAlive: true
   });
 
   // Initializes events state.
   const [event, setEvent] = useState({
     title: "meet your new pet",
     type: "New pet",
-    description: "Say hello to your new pet! Make sure you feed them and keep them healthy.",
+    description: "Say hello to your new pet! Make sure you keep them fed and healthy.",
     impact: {
       health: 70,
       hunger: 30,
@@ -58,6 +59,11 @@ function App() {
           [attribute]: newStat
       }
     })
+
+    // Checks if pet's health is 0. If true, it will process the pet's death.
+    if(pet.isAlive && pet.health === 0) {
+      petDied();
+    }
   }
 
   // DEBUG logs pet object whenever pet state is updated.
@@ -72,6 +78,28 @@ function App() {
         .then(res => res.json())
         .then(data => setEvent(data))
     setEventDate(petAge)
+  }
+
+  // Processes the pet's death.
+  function petDied(){
+    setPet(prevData => {
+      return {
+          ...prevData,
+          isAlive: false
+      }
+    });
+
+    setEvent({
+      title: "your pet has died",
+      type: "Death",
+      description: "Your pet's health declined too much and they passed away during the night.",
+      impact: {
+        health: 0,
+        hunger: 100,
+        happiness: 0
+      },
+      nextEvent: 100,
+    })
   }
 
   return (
