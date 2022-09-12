@@ -5,7 +5,7 @@ import PetAge from "./PetAge";
 
 function SidePanel(props) {
     // Initializes state for game speed
-    const [gameSpeed, setGameSpeed] = useState(10000);
+    const [gameSpeed, setGameSpeed] = useState(3000);
     
     // Toggles the hideMenu boolean 
     function toggleMenu() {
@@ -23,6 +23,7 @@ function SidePanel(props) {
             <PetAge
                 eventDate={props.eventDate}
                 nextEvent={props.nextEvent}
+                stopTime={props.stopTime}
                 getNewEvent={props.getNewEvent} 
                 petAge={props.petAge} 
                 setPetAge={props.setPetAge} 
@@ -39,7 +40,15 @@ function SidePanel(props) {
 
             {/* Settings button. Clicking toggles the hideMenu boolean (state in App.js), which will either hide or show the SettingsMenu. */}
             <button className="settings" onClick={toggleMenu}>Settings</button>
-            {props.hideMenu && <SettingsMenu pet={props.pet} setPet={props.setPet} gameSpeed={gameSpeed} setGameSpeed={setGameSpeed} />}
+            {props.hideMenu && 
+                <SettingsMenu 
+                    pet={props.pet} 
+                    setPet={props.setPet} 
+                    gameSpeed={gameSpeed} 
+                    setGameSpeed={setGameSpeed} 
+                    resetGame={props.resetGame}
+                />
+            }
         </div>
     );
 }

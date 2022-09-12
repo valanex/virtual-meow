@@ -30,6 +30,12 @@ function SettingsMenu(props) {
         }
     }
 
+    // Resets the game.
+    function handleResetGame() {
+        props.resetGame();
+    }
+        
+
     return (
         <div className="settings settings-menu">
             <p>Pet's name</p>
@@ -54,7 +60,10 @@ function SettingsMenu(props) {
                 >+</button>
             </div>
 
-            <button className="reset-button">RESET GAME</button>
+            <button 
+                className="reset-button"
+                onClick={handleResetGame}
+            >RESET GAME</button>
         </div>
     );
 }

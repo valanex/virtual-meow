@@ -7,62 +7,70 @@ function App() {
   const [hideMenu, setHideMenu] = useState(false);
   const [eventDate, setEventDate] = useState(0);
   const [petAge, setPetAge] = useState(0);
+  const [stopTime, setStopTime] = useState(false);
 
-  // Initializes pet state.
-  const [pet, setPet] = useState({
+  // Default stats of a new pet.
+  const defaultPet = {
     name: "Meower",
     health: 1,
     hunger: 1,
     happiness: 1,
     isAlive: true
-  });
+  }
 
-  // Initializes events state.
-  const [event, setEvent] = useState({
+  // Default event at the start of a new game. 
+  const defaultEvent = {
     title: "meet your new pet",
     type: "New pet",
     description: "Say hello to your new pet! Make sure you keep them fed and healthy.",
     impact: {
       health: 70,
-      hunger: 30,
+      hunger: -30,
       happiness: 80
     },
     nextEvent: 5,
-  });
+  }
+
+  // Initializes pet state.
+  const [pet, setPet] = useState(defaultPet);
+
+  // Initializes events state.
+  const [event, setEvent] = useState(defaultEvent);
 
   // Takes two parameters: the attribute to be affected and the amount (positive or negative) that the attribute will be changed by.
   function adjustStat(attribute, statChange) {
         
     // newStat is a placeholder variable to store the attribute's new value before being written into state.
     let newStat = 0;
-
-    // Calculates the new value for the relevant attribute and stores the number in newStat.
-    if (attribute === "health") {
-        newStat = pet.health + statChange;
-    } else if (attribute === "hunger") {
-        newStat = pet.hunger + statChange;
-    } else if (attribute === "happiness") {
-        newStat = pet.happiness + statChange;
-    }
-
-    // Processes newStat to lock stats to a range between 0 and 100.
-    if(newStat > 100) {
-        newStat = 100;
-    } else if (newStat < 0) {
-        newStat = 0;
-    }
-
-    // Sets the new value in pet state by adding in all existing properties and finally overwriting the relevant attribute (stat) with the new value.
-    setPet(prevData => {
-      return {
-          ...prevData,
-          [attribute]: newStat
+    if(pet.isAlive) {
+      // Calculates the new value for the relevant attribute and stores the number in newStat.
+      if (attribute === "health") {
+          newStat = pet.health + statChange;
+      } else if (attribute === "hunger") {
+          newStat = pet.hunger + statChange *-1;
+      } else if (attribute === "happiness") {
+          newStat = pet.happiness + statChange;
       }
-    })
 
-    // Checks if pet's health is 0. If true, it will process the pet's death.
-    if(pet.isAlive && pet.health === 0) {
-      petDied();
+      // Processes newStat to lock stats to a range between 0 and 100.
+      if(newStat > 100) {
+          newStat = 100;
+      } else if (newStat < 0) {
+          newStat = 0;
+      }
+
+      // Sets the new value in pet state by adding in all existing properties and finally overwriting the relevant attribute (stat) with the new value.
+      setPet(prevData => {
+        return {
+            ...prevData,
+            [attribute]: newStat
+        }
+      })
+
+      // Checks if pet's health is 0. If true, it will process the pet's death.
+      if(pet.health === 0) {
+        petDied();
+      }
     }
   }
 
@@ -98,8 +106,18 @@ function App() {
         hunger: 100,
         happiness: 0
       },
-      nextEvent: 100,
+      nextEvent: null,
     })
+
+  }
+
+  // Resets the game.
+  function resetGame() {
+    setStopTime(true);
+    setEventDate(0);
+    setPetAge(0);
+    setPet(defaultPet);
+    setEvent(defaultEvent);
   }
 
   return (
@@ -112,6 +130,7 @@ function App() {
           hideMenu={hideMenu} 
           setHideMenu={setHideMenu} 
           eventDate={eventDate}
+          stopTime={stopTime}
           pet={pet} 
           setPet={setPet} 
           nextEvent={event.nextEvent}
@@ -119,6 +138,7 @@ function App() {
           setPetAge={setPetAge} 
           adjustStat={adjustStat} 
           getNewEvent={getNewEvent}
+          resetGame={resetGame}
         />
         <MainPanel 
           pet={pet} 
