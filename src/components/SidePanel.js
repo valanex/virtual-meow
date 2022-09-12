@@ -23,13 +23,11 @@ function SidePanel(props) {
             <PetAge
                 eventDate={props.eventDate}
                 nextEvent={props.nextEvent}
-                stopTime={props.stopTime}
                 getNewEvent={props.getNewEvent} 
                 petAge={props.petAge} 
                 setPetAge={props.setPetAge} 
                 gameSpeed={gameSpeed} 
                 pet={props.pet} 
-                setPet={props.setPet} 
                 adjustStat={props.adjustStat} 
             />
 

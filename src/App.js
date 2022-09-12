@@ -7,7 +7,6 @@ function App() {
   const [hideMenu, setHideMenu] = useState(false);
   const [eventDate, setEventDate] = useState(0);
   const [petAge, setPetAge] = useState(0);
-  const [stopTime, setStopTime] = useState(false);
 
   // Default stats of a new pet.
   const defaultPet = {
@@ -45,25 +44,25 @@ function App() {
     if(pet.isAlive) {
       // Calculates the new value for the relevant attribute and stores the number in newStat.
       if (attribute === "health") {
-          newStat = pet.health + statChange;
+        newStat = (pet.health + statChange)
       } else if (attribute === "hunger") {
-          newStat = pet.hunger + statChange *-1;
+        newStat = pet.hunger + statChange *-1;
       } else if (attribute === "happiness") {
-          newStat = pet.happiness + statChange;
+        newStat = pet.happiness + statChange;
       }
 
       // Processes newStat to lock stats to a range between 0 and 100.
       if(newStat > 100) {
-          newStat = 100;
+        newStat = 100;
       } else if (newStat < 0) {
-          newStat = 0;
+        newStat = 0;
       }
 
       // Sets the new value in pet state by adding in all existing properties and finally overwriting the relevant attribute (stat) with the new value.
       setPet(prevData => {
         return {
-            ...prevData,
-            [attribute]: newStat
+          ...prevData,
+          [attribute]: newStat
         }
       })
 
@@ -88,7 +87,7 @@ function App() {
     setEventDate(petAge)
   }
 
-  // Processes the pet's death.
+  // Processes the pet's death. Updates pet state and event state to display end of game message.
   function petDied(){
     setPet(prevData => {
       return {
@@ -113,7 +112,6 @@ function App() {
 
   // Resets the game.
   function resetGame() {
-    setStopTime(true);
     setEventDate(0);
     setPetAge(0);
     setPet(defaultPet);
@@ -130,7 +128,6 @@ function App() {
           hideMenu={hideMenu} 
           setHideMenu={setHideMenu} 
           eventDate={eventDate}
-          stopTime={stopTime}
           pet={pet} 
           setPet={setPet} 
           nextEvent={event.nextEvent}
