@@ -1,5 +1,7 @@
 # Virtual Meow
-**by Angela Sun, 2022**
+**by Angela Sun, 2022**  
+[LinkedIn](https://linkedin/in/angela-sun-flores)  
+[GitHub](https://github.com/valanex)
 ## Overview
 This app was created to be my Solo Project submission to join [Chingu](https://www.chingu.io/) Voyage 41 and demonstrate my skills at Tier 2 level.  
 
