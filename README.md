@@ -38,10 +38,9 @@ The goal of the game is to keep your pet alive for as long as possible. Your pet
 
 ## Running the project
 
-*To be updated*
 1. Clone this project locally
 2. Run `npm install` in your bash / command line
-3. Run `npm run dev` in your bash / command line
+3. Run `npm start` in your bash / command line
 4. Play the game!
 
 ## Dependencies
