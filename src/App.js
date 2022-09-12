@@ -81,7 +81,7 @@ function App() {
   //  Fetches a new event.
   function getNewEvent() {
     // console.log("Event data fetched!")
-    fetch(`http://www.virtual-pet.uk/v1/event`)
+    fetch(`https://www.virtual-pet.uk/v1/event`)
         .then(res => res.json())
         .then(data => setEvent(data))
     setEventDate(petAge)
@@ -92,6 +92,9 @@ function App() {
     setPet(prevData => {
       return {
           ...prevData,
+          health: 0,
+          hunger: 100,
+          happiness: 0,
           isAlive: false
       }
     });
