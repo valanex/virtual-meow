@@ -145,7 +145,7 @@ function App() {
         />
       </main>
       <footer className="App-footer">
-        <p>developed using React<br />by Angela Sun, 2022</p>
+        <p>developed using React<br />by <a href="https://linkedin.com/in/angela-sun-flores" target="_blank">Angela Sun</a>, 2022</p>
       </footer>
     </div>
   );

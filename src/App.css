@@ -150,3 +150,8 @@ button {
 .App-footer {
   margin: 0.75rem;
 }
+
+.App-footer a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
