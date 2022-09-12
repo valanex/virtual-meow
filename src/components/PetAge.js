@@ -7,7 +7,7 @@ function PetAge(props) {
     useEffect(() => {
         let gameTime = "";
         if(props.pet.health>0) {
-            gameTime = setTimeout(()=>props.setPetAge(props.petAge +1), props.gameSpeed)
+            gameTime = setTimeout(()=>props.setPetAge(petAge +1), props.gameSpeed)
         } else {
             clearTimeout(gameTime);
         }

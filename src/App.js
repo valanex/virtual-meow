@@ -74,13 +74,13 @@ function App() {
   }
 
   // DEBUG logs pet object whenever pet state is updated.
-  useEffect(() => {
-    console.log(pet)
-  }, [pet])
+  // useEffect(() => {
+  //   console.log(pet)
+  // }, [pet])
 
   //  Fetches a new event.
   function getNewEvent() {
-    console.log("Event data fetched!")
+    // console.log("Event data fetched!")
     fetch(`http://www.virtual-pet.uk/v1/event`)
         .then(res => res.json())
         .then(data => setEvent(data))
@@ -145,7 +145,7 @@ function App() {
         />
       </main>
       <footer className="App-footer">
-        <p>developed in React<br />by Angela Sun, 2022</p>
+        <p>developed using React<br />by Angela Sun, 2022</p>
       </footer>
     </div>
   );

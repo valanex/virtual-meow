@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+h1 {
+  text-shadow: 5px 4px 2px #474747;
+}
+
 .App-main {
   display: flex;
   justify-content: center;
@@ -19,7 +23,7 @@
 
 .Side-panel {
   padding: 2rem 2rem;
-  background-color: #5C6F60;
+  background: linear-gradient(#9381aa, #5d8b9a);
   width: 25%;
   min-width: 275px;
   max-width: 350px;
@@ -27,7 +31,7 @@
 
 .Main-panel {
   padding: 3rem;
-  background-color: #3B5140;
+  background: linear-gradient(#756886, #385768);
   width: 45%;
   min-width: 500px;
   max-width: 700px;
@@ -141,4 +145,8 @@ button {
   margin-top: 1rem;
   background-color: #7C0000;
   width: 100%;
+}
+
+.App-footer {
+  margin: 0.75rem;
 }
