@@ -51,3 +51,8 @@ The goal of the game is to keep your pet alive for as long as possible. Your pet
 - [React-Bootstrap](https://react-bootstrap.github.io/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## To-Do
+- Include game instructions / explanation on app page
+- Implement a start button to let players determine when to start playing
+- Add visual feedback for button clicks
