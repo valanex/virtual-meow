@@ -1,7 +1,8 @@
-# Virtual Meow
+# Virtual Meower
 **by Angela Sun, 2022**  
 [LinkedIn](https://linkedin.com/in/angela-sun-flores)  
 [GitHub](https://github.com/valanex)
+[Play the game](https://comforting-peony-5b904b.netlify.app)
 ## Overview
 This app was created to be my Solo Project submission to join [Chingu](https://www.chingu.io/) Voyage 41 and demonstrate my skills at Tier 2 level.  
 
